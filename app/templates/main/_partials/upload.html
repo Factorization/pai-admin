@@ -10,7 +10,7 @@
                     <label for="file" class="form-label">Select multiple files</label>
                     <div class="input-group mb-3">
                         <input class="form-control form-control-sm" type="file" type="file" name="file" id="file"
-                            multiple>
+                            accept="{{ supported_extensions | join(',') }}" multiple>
                         <button class="btn btn-outline-success btn-sm ms-auto'" id="submit" name="submit"
                             type="submit">Upload Files</button>
                     </div>
@@ -22,3 +22,18 @@
         </div>
     </div>
 </div>
+<script>
+    $("#file").on("change", function (e) {
+        const dt = new DataTransfer()
+        files = Array.from(e.currentTarget.files);
+        for (let file of files) {
+            if (file.size < 50 * 1024 * 1024) {
+                console.log(file.name);
+                dt.items.add(file);
+            } else {
+                alert("Error: File '" + file.name + "' is too large. Removing from selected files too upload.")
+            }
+        }
+        e.currentTarget.files = dt.files;
+    });
+</script>

@@ -52,8 +52,11 @@ def delete_file(id):
 @login_required
 def upload_modal():
     log_request()
-
-    return render_template("main/_partials/upload.html")
+    supported_extensions = [
+        f".{extension.removeprefix('.')}"
+        for extension in current_app.config["SUPPORTED_FILE_EXTENSIONS"]
+    ]
+    return render_template("main/_partials/upload.html", supported_extensions=supported_extensions)
 
 
 @bp.route("/upload", methods=["POST"])
