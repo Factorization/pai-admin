@@ -65,7 +65,8 @@ def upload_files():
         if filename != "":
             file_ext = os.path.splitext(filename)[1]
             if file_ext not in supported_extensions:
-                flash(f"Unsupported file type for file '{filename}'", "danger")
+                flash(f"Unsupported file type for file '{filename}'.", "danger")
                 continue
             file.save(os.path.join(current_app.config["DATA_DIR"], filename))
+            flash(f"Success: File '{filename}' uploaded.", "success")
     return redirect(url_for("main.index"))

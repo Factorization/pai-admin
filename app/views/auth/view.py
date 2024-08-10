@@ -29,7 +29,7 @@ def login():
             current_app.logger.warning(
                 f"User:{username} | IP: {request.remote_addr} - Username or password is incorrect"
             )
-            flash("Login failed. Invalid username or password", "danger")
+            flash("Login failed. Invalid username or password.", "danger")
             return redirect(url_for("auth.login", next=unquote_plus(next_page)))
         login_user(user)
         current_app.logger.info(
