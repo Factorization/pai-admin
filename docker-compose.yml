@@ -4,7 +4,7 @@ services:
       dockerfile: Dockerfile
     container_name: pai-admin
     environment:
-      - SECRET_KEY=e7486e69d50384e37d2d253a47a904e5146bfcc7a48e62008067ead9c85d548d
+      - SECRET_KEY=A_VERY_SECRET_KEY_MAKE_TO_REPLACE_THIS_KEY_123@!
       - DATA_DIR=/data
       - DATABASE_URL=sqlite:////database/app.db
       - LOG_TO_STDOUT=true
