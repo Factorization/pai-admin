@@ -1,7 +1,11 @@
 {% macro navbar() %}
 <nav class="navbar bg-primary navbar-expand-md">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('main.index') }}">PAI Admin</a>
+        <a class="navbar-brand" href="{{ url_for('main.index') }}">
+            <img src="{{ url_for('static', filename='images/icons/favicon.jpeg') }}" width="30" height="30"
+                class="d-inline-block align-top" alt="">
+            <span style="color:#ffffff;" class="navbar-brand-text-light">{{ site_name }}</span>
+        </a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
