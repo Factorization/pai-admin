@@ -1,0 +1,17 @@
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Manage container</h5>
+        </div>
+        <div class="modal-body">
+            <div class="container container-fluid">
+                <form class="row g-3" action="{{url_for('main.container_manage')}}" method="post"
+                    enctype="multipart/form-data">
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-sm ms-auto" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>

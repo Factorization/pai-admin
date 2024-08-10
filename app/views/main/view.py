@@ -82,3 +82,17 @@ def upload_files():
             file.save(os.path.join(current_app.config["DATA_DIR"], filename))
             flash(f"File '{filename}' uploaded successfully.", "success")
     return redirect(url_for("main.index"))
+
+
+@bp.route("/container", methods=["GET"])
+@login_required
+def container_modal():
+    log_request()
+
+    return render_template("main/_partials/container.html")
+
+
+@bp.route("/container", methods=["POST"])
+@login_required
+def container_manage():
+    return redirect(url_for("main.index"))

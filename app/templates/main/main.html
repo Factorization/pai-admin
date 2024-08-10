@@ -4,11 +4,24 @@
 {% block content %}
 <h1>Manage Files</h1>
 
-<div class="container container-fluid">
-    <button hx-get="{{url_for('main.upload_modal')}}" hx-target="#modals-here" hx-trigger="click" data-bs-toggle="modal"
-        data-bs-target="#modals-here" class="btn btn-primary btn-sm ms-auto">Upload files</button>
+
+<div class="">
+    <button hx-get="{{url_for('main.upload_modal')}}" hx-target="#upload-modals" hx-trigger="click"
+        data-bs-toggle="modal" data-bs-target="#upload-modals" class="btn btn-primary btn-sm ms-auto">Upload
+        files</button>
+    <button hx-get="{{url_for('main.container_modal')}}" hx-target="#container-modal" hx-trigger="click"
+        data-bs-toggle="modal" data-bs-target="#container-modal" class="btn btn-primary btn-sm ms-auto">Manage
+        container</button>
 </div>
-<div id="modals-here" class="modal modal-blur fade" style="display: none" aria-hidden="false" tabindex="-1">
+{# File Upload Modal #}
+<div id="upload-modals" class="modal modal-blur fade" style="display: none" aria-hidden="false" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+{# Container Modal #}
+<div id="container-modal" class="modal modal-blur fade" style="display: none" aria-hidden="false" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content"></div>
     </div>
