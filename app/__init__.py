@@ -37,6 +37,10 @@ def create_app(config_class=Config):
     limiter.limit("3 per second")(auth_bp)
     app.register_blueprint(auth_bp)
 
+    from app.views.errors import bp as errors_bp
+
+    app.register_blueprint(errors_bp)
+
     from app.views.main import bp as main_bp
 
     app.register_blueprint(main_bp)

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>File too large</h1>
+<p>The file selected was too large. The max file size is 50MB.</p>
+<p><a class="btn btn-primary" href="{{ url_for('main.index') }}">Back</a></p>
+{% endblock %}
