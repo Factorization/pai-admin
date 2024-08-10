@@ -60,7 +60,7 @@ class File(db.Model):  # type: ignore
 
     def delete_file(self):
         current_app.logger.info(f"Deleting file '{self.name}' from DB and directory.")
-        if current_app.config["DELETE_FILE_ENABLED"]:
+        if current_app.config["DELETE_FILES_ENABLED"]:
             Path(self.full_name).unlink(missing_ok=True)  # type: ignore
         db.session.delete(self)
         db.session.commit()
