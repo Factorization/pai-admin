@@ -1,0 +1,11 @@
+arrow
+email-validator
+Flask
+Flask-Limiter
+Flask-Login
+Flask-Migrate
+Flask-SQLAlchemy
+Flask-WTF
+gunicorn
+python-dotenv
+Werkzeug

@@ -1,0 +1,52 @@
+.body-content {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* .flashToast {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+} */
+
+.card {
+    width: 50vw;
+    margin: auto;
+    background: #f0f0f0;
+    border: 1px solid black;
+}
+
+.card-header {
+    color: rgba(255, 255, 255, 0.85);
+    background: #0078d4;
+    font-weight: 300;
+}
+
+.card-text {
+    align-content: center
+}
+
+#wrapper {
+    display: flex;
+}
+
+#left {
+    flex: content;
+    margin-right: 0.5em;
+
+}
+
+#right {
+    flex: 1;
+}
+
+tr.htmx-swapping td {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}

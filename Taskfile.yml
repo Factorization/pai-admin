@@ -1,0 +1,28 @@
+version: "3"
+
+tasks:
+  pip:compile:
+    cmds:
+      - pip-compile --strip-extras --generate-hashes requirements.in
+      - pip-compile --strip-extras --generate-hashes dev-requirements.in
+    desc: Compiles pip requirements and dev-requirements
+
+  pip:sync:
+    cmds:
+      - pip-sync requirements.txt dev-requirements.txt
+    desc: Installs pip requirements and dev-requirements
+
+  flask:db-init:
+    cmds:
+      - flask db init
+    desc: Initializes Flask database
+
+  flask:db-migrate:
+    cmds:
+      - flask db migrate
+    desc: Runs a migration on the Flask database
+
+  flask:create-secret:
+    cmds:
+      - python -c 'import secrets; print(secrets.token_hex())'
+    desc: Generates a valid secret for Flask

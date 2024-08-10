@@ -1,0 +1,18 @@
+{% macro navbar() %}
+<nav class="navbar bg-primary navbar-expand-md">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('main.index') }}">PAI Admin</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    {% if current_user.is_anonymous %}
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-outline-light">Login</a>
+                    {% else %}
+                    <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-light">Logout</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{%- endmacro %}
