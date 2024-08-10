@@ -35,9 +35,8 @@ def before_request():
 def index():
     log_request()
     vm = MainViewModel()
-    form = UploadForm
 
-    return render_template("main/main.html", form=form, **vm.to_dict())
+    return render_template("main/main.html", **vm.to_dict())
 
 
 @bp.route("/file/<int:id>/delete", methods=["Delete"])
