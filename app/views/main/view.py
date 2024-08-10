@@ -34,8 +34,9 @@ def before_request():
 def index():
     log_request()
     vm = MainViewModel()
+    site_prefix = current_app.config["SITE_PREFIX"]
 
-    return render_template("main/main.html", **vm.to_dict())
+    return render_template("main/main.html", site_prefix=site_prefix, **vm.to_dict())
 
 
 @bp.route("/file/<int:id>/delete", methods=["Delete"])
@@ -56,7 +57,9 @@ def upload_modal():
         f".{extension.removeprefix('.')}"
         for extension in current_app.config["SUPPORTED_FILE_EXTENSIONS"]
     ]
-    return render_template("main/_partials/upload.html", supported_extensions=supported_extensions)
+    return render_template(
+        "main/_partials/upload.html", supported_extensions=supported_extensions
+    )
 
 
 @bp.route("/upload", methods=["POST"])
