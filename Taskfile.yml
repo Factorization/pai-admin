@@ -29,13 +29,13 @@ tasks:
 
   flask:create-user-local:
     cmds:
-      - python create_user.py
+      - python manage.py --create-user
     desc: Creates user in Flask database when Flask is running locally (not in container)
 
   flask:create-user-container:
     cmds:
       - podman compose up -d
-      - podman compose exec pai-admin python create_user.py
+      - podman compose exec pai-admin python manage.py --create-user
 
   podman-compose:build:
     cmds:

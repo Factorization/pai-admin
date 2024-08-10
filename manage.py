@@ -118,7 +118,7 @@ def main_create_user(app):
     email = get_email(app)
     password = get_password()
     create_user(username, email, password, app)
-    print(f"User '{username}', created successfully!")
+    print(f"User '{username}' - created successfully!")
 
 
 def main_delete_user(app):
@@ -128,7 +128,7 @@ def main_delete_user(app):
         with app.app_context():
             db.session.delete(user)
             db.session.commit()
-            print(f"User '{user.username}', deleted successfully!")
+            print(f"User '{user.username}' - deleted successfully!")
     else:
         print("User NOT deleted. Exiting...")
 
@@ -140,7 +140,7 @@ def main_set_password(app):
         user.set_password(password)
         db.session.add(user)
         db.session.commit()
-        print(f"User '{user.username}', password changed successfully!")
+        print(f"User '{user.username}' - password changed successfully!")
 
 
 def main_list_users(app):
