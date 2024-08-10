@@ -66,7 +66,6 @@ def create_app(config_class=Config):
 
     app.logger.setLevel(logging.INFO)
     app.logger.info("Flask App startup")
-    app.logger.info(f"URL Prefix: {app.config["FLASK_URL_PREFIX"]}")
     return app
 
 
