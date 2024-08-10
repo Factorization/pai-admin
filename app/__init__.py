@@ -35,15 +35,15 @@ def create_app(config_class=Config):
 
     limiter.limit("30 per hour")(auth_bp)
     limiter.limit("3 per second")(auth_bp)
-    app.register_blueprint(auth_bp)
+    app.register_blueprint(auth_bp, url_prefix=app.config["FLASK_URL_PREFIX"])
 
     from app.views.errors import bp as errors_bp
 
-    app.register_blueprint(errors_bp)
+    app.register_blueprint(errors_bp, url_prefix=app.config["FLASK_URL_PREFIX"])
 
     from app.views.main import bp as main_bp
 
-    app.register_blueprint(main_bp)
+    app.register_blueprint(main_bp, url_prefix=app.config["FLASK_URL_PREFIX"])
 
     # Setup logging
     if app.config["LOG_TO_STDOUT"]:
@@ -66,7 +66,7 @@ def create_app(config_class=Config):
 
     app.logger.setLevel(logging.INFO)
     app.logger.info("Flask App startup")
-
+    app.logger.info(f"URL Prefix: {app.config["FLASK_URL_PREFIX"]}")
     return app
 
 

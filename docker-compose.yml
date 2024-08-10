@@ -9,6 +9,7 @@ services:
       - DATABASE_URL=sqlite:////database/app.db
       - LOG_TO_STDOUT=true
       - DELETE_FILES_ENABLED=true
+      - FLASK_URL_PREFIX=/admin
     ports:
       - 3000:3000
     volumes:

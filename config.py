@@ -11,8 +11,15 @@ class Config:
     SITE_NAME = "PAI Admin"
     DEFAULT_TITLE = "PAI Admin"
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    LOG_TO_STDOUT = True if os.environ.get("LOG_TO_STDOUT", "True").lower() == "true" else False
+    LOG_TO_STDOUT = (
+        True if os.environ.get("LOG_TO_STDOUT", "True").lower() == "true" else False
+    )
     SUPPORTED_FILE_EXTENSIONS = ["pdf", "doc", "docx", "txt"]
     DATA_DIR = os.environ.get("DATA_DIR")
     MAX_CONTENT_LENGTH = 50 * 1024 * 1024
-    DELETE_FILES_ENABLED = True if os.environ.get("DELETE_FILES_ENABLED", "False").lower() == "true" else False
+    DELETE_FILES_ENABLED = (
+        True
+        if os.environ.get("DELETE_FILES_ENABLED", "False").lower() == "true"
+        else False
+    )
+    FLASK_URL_PREFIX = os.environ.get("FLASK_URL_PREFIX")
