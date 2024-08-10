@@ -19,7 +19,6 @@ from app.bin.utils import log_request
 from app.models import File, get_all_files
 from app.viewmodels.main.main_viewmodel import MainViewModel
 from app.views.main import bp
-from app.views.main.forms import UploadForm
 
 
 @bp.before_request
@@ -53,9 +52,8 @@ def delete_file(id):
 @login_required
 def upload_modal():
     log_request()
-    form = UploadForm
 
-    return render_template("main/_partials/upload.html", form=form)
+    return render_template("main/_partials/upload.html")
 
 
 @bp.route("/upload", methods=["POST"])
