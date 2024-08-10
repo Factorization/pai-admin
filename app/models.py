@@ -64,3 +64,7 @@ class File(db.Model):  # type: ignore
             Path(self.full_name).unlink(missing_ok=True)  # type: ignore
         db.session.delete(self)
         db.session.commit()
+
+
+def get_all_files():
+    return db.session.execute(sa.select(File).order_by(File.name)).scalars().all()

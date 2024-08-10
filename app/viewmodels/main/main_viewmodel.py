@@ -5,7 +5,7 @@ import sqlalchemy as sa
 from flask import current_app
 
 from app import db
-from app.models import File
+from app.models import File, get_all_files
 from app.viewmodels.shared.viewmodelbase import ViewModelBase
 
 
@@ -43,14 +43,14 @@ class MainViewModel(ViewModelBase):
                 new_file.set_fullname()
                 db.session.add(new_file)
                 db.session.commit()
-        db_files = (
-            db.session.execute(sa.select(File).order_by(File.name)).scalars().all()
-        )
+        db_files = get_all_files()
         db_file_to_remove = [
             file for file in db_files if file.name not in data_directory_file_names
         ]
         for file in db_file_to_remove:
-            current_app.logger.info(f"Removing file '{file.name}' from DB as it is no longer in the directory")
+            current_app.logger.info(
+                f"Removing file '{file.name}' from DB as it is no longer in the directory"
+            )
             db.session.delete(file)
             db.session.commit()
 
