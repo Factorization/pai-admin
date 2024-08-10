@@ -22,4 +22,3 @@ class Config:
         if os.environ.get("DELETE_FILES_ENABLED", "False").lower() == "true"
         else False
     )
-    FLASK_URL_PREFIX = os.environ.get("FLASK_URL_PREFIX")
