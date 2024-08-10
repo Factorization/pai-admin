@@ -28,7 +28,6 @@
         files = Array.from(e.currentTarget.files);
         for (let file of files) {
             if (file.size < 50 * 1024 * 1024) {
-                console.log(file.name);
                 dt.items.add(file);
             } else {
                 alert("Error: File '" + file.name + "' is too large. Removing from selected files too upload.")
