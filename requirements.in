@@ -8,4 +8,5 @@ Flask-SQLAlchemy
 Flask-WTF
 gunicorn
 python-dotenv
+tabulate
 Werkzeug
