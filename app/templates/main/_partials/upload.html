@@ -1,0 +1,23 @@
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Upload files</h5>
+        </div>
+        <div class="modal-body">
+            <div class="container container-fluid">
+                <form class="row g-3" action="{{url_for('main.upload_files')}}" method="post"
+                    enctype="multipart/form-data">
+                    <label for="file" class="form-label">Select multiple files</label>
+                    <div class="input-group mb-3">
+                        <input class="form-control form-control-sm" type="file" type="file" name="file" id="file"
+                            multiple>
+                        <button class="btn btn-outline-success btn-sm ms-auto'" id="submit" name="submit" type="submit">Upload files</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-sm ms-auto" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
