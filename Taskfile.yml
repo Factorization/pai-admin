@@ -26,3 +26,46 @@ tasks:
     cmds:
       - python -c 'import secrets; print(secrets.token_hex())'
     desc: Generates a valid secret for Flask
+
+  flask:create-user-local:
+    cmds:
+      - python create_user.py
+    desc: Creates user in Flask database when Flask is running locally (not in container)
+
+  flask:create-user-container:
+    cmds:
+      - podman compose up -d
+      - podman compose exec pai-admin python create_user.py
+
+  podman-compose:build:
+    cmds:
+      - podman compose build
+      - podman image prune
+    desc: Build docker container using podman compose
+
+  podman-compose:start:
+    cmds:
+      - podman compose up -d
+    desc: Start docker container using podman compose
+
+  podman-compose:logs:
+    cmds:
+      - podman compose logs -f
+    desc: Show docker container logs (container stdout)
+    ignore_error: true
+
+  podman-compose:stop:
+    cmds:
+      - podman compose down
+    desc: Stops docker container using podman compose
+
+  podman-compose:destroy:
+    cmds:
+      - podman compose down -v
+    prompt: This will delete the data volumes. Are you sure you want to continue?
+    desc: Stops docker container and destroys volumes using podman compose
+
+  podman:image-prune:
+    cmds:
+      - podman image prune
+    desc: Removes unused container images
