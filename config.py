@@ -22,4 +22,4 @@ class Config:
         if os.environ.get("DELETE_FILES_ENABLED", "False").lower() == "true"
         else False
     )
-    SITE_PREFIX = os.environ.get("SITE_PREFIX", "")
+    SITE_PREFIX = os.environ.get("SCRIPT_NAME", "")
