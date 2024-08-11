@@ -11,6 +11,9 @@ COPY migrations migrations
 COPY manage.py run_flask.py config.py start.sh ./
 RUN chmod a+x start.sh
 
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 ENV FLASK_APP run_flask.py
 
 EXPOSE 3000
