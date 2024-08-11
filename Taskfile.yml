@@ -12,6 +12,11 @@ tasks:
       - pip-sync requirements.txt dev-requirements.txt
     desc: Installs pip requirements and dev-requirements
 
+  lines-of-code:
+    cmds:
+      - cloc --exclude-dir=.logs,.DS_Store,.mypy_cache,.ruff_cache,.vscode,migrations,requirements.txt,dev-requirements.txt .
+    desc: Count lines of code
+
   flask:db-init:
     cmds:
       - flask db init
@@ -36,6 +41,7 @@ tasks:
     cmds:
       - podman compose up -d
       - podman compose exec pai-admin python manage.py --create-user
+    desc: Creates user in Flask database when Flask is running in a container
 
   podman-compose:build:
     cmds:
