@@ -1,7 +1,9 @@
 FROM python:slim
 
 COPY requirements.txt requirements.txt
-RUN pip install --no-deps -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install --upgrade wheel setuptools
+RUN pip install --no-cache-dir --no-deps -r requirements.txt
 RUN pip install gunicorn cryptography
 
 COPY app app
