@@ -7,7 +7,7 @@ from app.infrastructure import request_dict
 
 
 class ViewModelBase:
-    def __init__(self, default_limit: int = 10):
+    def __init__(self):
         self.request: Request = flask.request
         self.request_dict: dict = request_dict.create(default_val="")
 
