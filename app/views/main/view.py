@@ -34,7 +34,7 @@ def before_request():
 def index():
     log_request()
     vm = MainViewModel()
-    site_prefix = current_app.config["SITE_PREFIX"]
+    site_prefix = current_app.config["SCRIPT_NAME"]
 
     return render_template("main/main.html", site_prefix=site_prefix, **vm.to_dict())
 
