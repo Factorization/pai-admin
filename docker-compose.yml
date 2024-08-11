@@ -3,6 +3,7 @@ services:
     build:
       dockerfile: Dockerfile
     container_name: pai-admin
+    stop_signal: SIGINT
     environment:
       - SECRET_KEY=A_VERY_SECRET_KEY_MAKE_TO_REPLACE_THIS_KEY_123@!
       - DATA_DIR=/data
