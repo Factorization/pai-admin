@@ -71,7 +71,7 @@
         let rowData = table.row($(this).parents('tr')).data();
         if (confirm('Are you sure you want to delete this file?\n\n' + "File: " + rowData[0])) {
             let fileId = rowData[5];
-            let url = "{{ site_prefix }}" + "{{ url_for('main.delete_file', id='0') }}".replace('0', fileId)
+            let url = "{{ url_for('main.delete_file', id='0') }}".replace('0', fileId)
             fetch(url, {
                 method: 'DELETE'
             });
