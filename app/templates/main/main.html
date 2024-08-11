@@ -68,7 +68,7 @@
     });
     table.on('click', 'td button', function (e) {
         e.preventDefault();
-        rowData = table.row($(this).parents('tr')).data();
+        let rowData = table.row($(this).parents('tr')).data();
         if (confirm('Are you sure you want to delete this file?\n\n' + "File: " + rowData[0])) {
             let fileId = rowData[5];
             let url = "{{ site_prefix }}" +"/file/" + fileId + "/delete"
