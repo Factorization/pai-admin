@@ -17,7 +17,7 @@ class IndexFile:
     def index_flag_status(file):
         if file.exists():
             stats = file.stat()
-            created_at = datetime.fromtimestamp(stats.st_birthtime, tz=timezone.utc)
+            created_at = datetime.fromtimestamp(stats.st_ctime, tz=timezone.utc)
             return created_at, arrow.get(created_at).humanize()
         else:
             return "Unknown", "Unknown"
