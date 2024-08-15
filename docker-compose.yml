@@ -16,6 +16,8 @@ services:
     volumes:
       - database:/database
       - /Users/jkraemer/Downloads/Kwaai-WG-Data:/data
+      - /Users/jkraemer/Downloads/Kwaai-WG-Data:/index
+      - /var/run/docker.sock:/var/run/docker.sock
 
 volumes:
   database:

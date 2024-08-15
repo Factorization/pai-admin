@@ -1,13 +1,38 @@
+{% set container_minimum_uptime = container_minimum_uptime | int %}
+{% set container_minimum_minutes = (container_minimum_uptime % 3600) // 60 %}
+{% set container_minimum_seconds = (container_minimum_uptime % 60) %}
+
+{% set index_minimum_uptime = index_minimum_uptime | int %}
+{% set index_minimum_minutes = (index_minimum_uptime % 3600) // 60 %}
+{% set index_minimum_seconds = (index_minimum_uptime % 60) %}
+
 <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">Manage container</h5>
+            <h5 class="modal-title">Manage Container</h5>
         </div>
         <div class="modal-body">
-            <div class="container container-fluid">
-                <form class="row g-3" action="{{url_for('main.container_manage')}}" method="post"
-                    enctype="multipart/form-data">
-                </form>
+            <div>
+                <strong>Name:</strong> {{ container_name }}
+                <br>
+                <span id="status" hx-get="{{ url_for('main.container_status') }}" hx-trigger="load, every 10s"
+                    hx-swap="inner-HTML"></span>
+                <br>
+                <span id="uptime" hx-get="{{ url_for('main.container_uptime') }}" hx-trigger="load, every 10s"
+                    hx-swap="inner-HTML"></span>
+                <div class="fa fa-solid fa-circle-info text-primary" data-toggle="tooltip"
+                    title="Container must be up for {{ '%dm ' % container_minimum_minutes if container_minimum_minutes else '' }} {{ '%ds' % container_minimum_seconds if container_minimum_seconds else '' }} before it can be restarted">
+                </div>
+                <br>
+                <span id="index" hx-get="{{ url_for('main.container_index_status') }}" hx-trigger="load, every 10s"
+                    hx-swap="inner-HTML"></span>
+                <div class="fa fa-solid fa-circle-info text-primary" data-toggle="tooltip"
+                    title="Index must be up for {{ '%dm ' % index_minimum_minutes if index_minimum_minutes else '' }} {{ '%ds' % index_minimum_seconds if index_minimum_seconds else '' }} before it can be restarted">
+                </div>
+            </div>
+            <div style="padding-top: .6em;">
+                <span id="restart" hx-get="{{ url_for('main.is_container_restartable') }}"
+                    hx-trigger="load, click delay:1s, every 10s" hx-swap="inner-HTML"></span>
             </div>
         </div>
         <div class="modal-footer">
@@ -15,3 +40,8 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip({});
+    });
+</script>

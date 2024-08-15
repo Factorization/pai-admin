@@ -22,3 +22,8 @@ class Config:
         if os.environ.get("DELETE_FILES_ENABLED", "False").lower() == "true"
         else False
     )
+    CONTAINER_NAME = os.environ.get("CONTAINER_NAME")
+    INDEX_RUNNING_FILE = os.environ.get("INDEX_RUNNING_FILE")
+    INDEX_COMPLETE_FILE = os.environ.get("INDEX_COMPLETE_FILE")
+    MINIMUM_CONTAINER_UPTIME_SECONDS = os.environ.get("MINIMUM_CONTAINER_UPTIME_SECONDS", 300)
+    MINIMUM_INDEX_UPTIME_SECONDS = os.environ.get("MINIMUM_INDEX_UPTIME_SECONDS", 300)
