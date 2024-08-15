@@ -11,6 +11,11 @@ services:
       - LOG_TO_STDOUT=true
       - DELETE_FILES_ENABLED=true
       - SCRIPT_NAME=/admin
+      - CONTAINER_NAME=pai-admin
+      - INDEX_RUNNING_FILE='/Users/jkraemer/Downloads/Kwaai-WG-Data/index.running'
+      - INDEX_COMPLETE_FILE='/Users/jkraemer/Downloads/Kwaai-WG-Data/index.complete'
+      - MINIMUM_CONTAINER_UPTIME_SECONDS=60
+      - MINIMUM_INDEX_UPTIME_SECONDS=300
     ports:
       - 3000:3000
     volumes:
