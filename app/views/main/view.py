@@ -120,7 +120,6 @@ def is_container_restartable():
     index_restartable = index.is_restartable(
         must_be_up_for_seconds=current_app.config["MINIMUM_INDEX_UPTIME_SECONDS"]
     )
-    print(container_restartable, index_restartable)
     if container_restartable and index_restartable:
         return render_template("main/_partials/container_restart_enabled.html")
     elif container_restartable and not index_restartable:
