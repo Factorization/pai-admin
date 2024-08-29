@@ -145,10 +145,12 @@ def main_set_password(app):
 
 def main_list_users(app):
     with app.app_context():
-        users = db.session.execute(sa.select(User).order_by(User.username)).scalars().all()
+        users = (
+            db.session.execute(sa.select(User).order_by(User.username)).scalars().all()
+        )
     results = [(user.username, user.email) for user in users]
     print()
-    print(tabulate(results, headers=['Username', 'Email'], tablefmt='rounded_outline'))
+    print(tabulate(results, headers=["Username", "Email"], tablefmt="rounded_outline"))
 
 
 def parse_args():
